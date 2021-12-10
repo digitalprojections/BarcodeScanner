@@ -6,6 +6,22 @@
         xmlns:local="clr-namespace:BarcodeScanner"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <CollectionViewSource x:Key="ProductsViewSource"/>
+
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="5,0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            
+        </Style>        
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -15,7 +31,12 @@
             <Button x:Name="add_btn" Content="Add Item" IsCancel="True" />
             <Button x:Name="settings_btn" Content="Settings" IsCancel="True"/>
         </StackPanel>
-        
+        <DataGrid Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="No." IsReadOnly="True"/>
+                <DataGridTextColumn Header="Product"/>
+            </DataGrid.Columns>            
+        </DataGrid>
 
     </Grid>
 </Window>
