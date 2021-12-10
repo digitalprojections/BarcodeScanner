@@ -7,8 +7,14 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="add_btn" Content="Add Item" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsCancel="True" Width="100"/>
-        <Button x:Name="settings_btn" Content="Settings" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" IsCancel="True" Width="100"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button x:Name="add_btn" Content="Add Item" IsCancel="True" />
+            <Button x:Name="settings_btn" Content="Settings" IsCancel="True"/>
+        </StackPanel>
         
 
     </Grid>
