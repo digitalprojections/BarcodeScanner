@@ -11,7 +11,7 @@ namespace BarcodeScanner
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly DBContext dBContext = new DBContext();
+        private readonly DBContext dbContext = new DBContext();
         private CollectionViewSource categoryViewSource;
         public MainWindow()
         {            
@@ -23,15 +23,29 @@ namespace BarcodeScanner
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            dBContext.Database.EnsureCreated();
+            dbContext.Database.EnsureCreated();
 
-            dBContext.Categories.Load();
-            categoryViewSource.Source = dBContext.Categories.Local.ToObservableCollection();
+            dbContext.Categories.Load();
+            categoryViewSource.Source = dbContext.Categories.Local.ToObservableCollection();
+
+            if (dbContext.Products.Local.ToObservableCollection().Count==0)
+            {
+                int ptracker = 0;
+                            for (int j = 1; j <= 40; j++)
+                            {
+                                for (int i = 1; i <= 40; i++)
+                                {
+                                    ptracker++;
+                                    dbContext.Products.Add(new Product { ProductID = ptracker, Name = "Product " + ptracker, CategoryID = j });
+                                }
+                            }
+            }
+            
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            dBContext.SaveChanges();
+            dbContext.SaveChanges();
             //dBContext.Dispose();
             //base.OnClosing(e);
             prodsgrid.Items.Refresh();
@@ -39,7 +53,7 @@ namespace BarcodeScanner
 
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
-            dBContext.SaveChanges();
+            dbContext.SaveChanges();
         }
     }
 }

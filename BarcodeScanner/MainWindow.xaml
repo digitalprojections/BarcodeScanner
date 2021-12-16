@@ -33,17 +33,18 @@
             <Button x:Name="settings_btn" Content="Settings" IsCancel="True"/>
             
         </StackPanel>
-        <DataGrid HeadersVisibility="None" Height="300" ItemsSource="{Binding Source={StaticResource categoryViewSource}}">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" HeadersVisibility="None" Height="300" ItemsSource="{Binding Source={StaticResource categoryViewSource}}">
             <DataGrid.Columns>
                 
                 <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="prodsgrid" Grid.Column="1" ItemsSource="{Binding Source={StaticResource categoryProductsViewSource}}">
+        <DataGrid AutoGenerateColumns="False" CanUserAddRows="False" x:Name="prodsgrid" Grid.Column="1" ItemsSource="{Binding Source={StaticResource categoryProductsViewSource}}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="No." Width="30" IsReadOnly="True" Binding="{Binding ProductID}"/>
+                <DataGridTextColumn Header="No." Width="40" IsReadOnly="True" Binding="{Binding ProductID}"/>
                 <DataGridTextColumn Header="Product" Width="150" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="Barcode" Width="*" Binding="{Binding BarCode}"/>
             </DataGrid.Columns>            
         </DataGrid>
 
