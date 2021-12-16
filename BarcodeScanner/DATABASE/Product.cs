@@ -12,7 +12,7 @@ namespace BarcodeScanner.DATABASE
         public string BarCode { get; set; }
         public string Description { get; set; }
     
-        public int CategoriesID { get; set; }
-        public virtual Categories Categories { get; set; }
+        public int CategoryID { get; set; }
+        public virtual Category Category { get; set; }
 }
 }
