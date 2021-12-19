@@ -7,7 +7,7 @@ namespace BarcodeScanner.DATABASE
     {
         public DBContext()
         {
-            Database.EnsureDeleted();
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 

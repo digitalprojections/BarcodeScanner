@@ -3,6 +3,7 @@ using System.Diagnostics;
 using BarcodeScanner.DATABASE;
 using System.Windows.Data;
 using Microsoft.EntityFrameworkCore;
+using BarcodeScanner.Views;
 
 namespace BarcodeScanner
 {
@@ -54,6 +55,12 @@ namespace BarcodeScanner
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
             dbContext.SaveChanges();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new CustomerWindow();
+            dlg.Show();
         }
     }
 }
