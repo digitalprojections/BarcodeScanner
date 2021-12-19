@@ -14,7 +14,6 @@ namespace BarcodeScanner.Models
             Name =customerName;
         }
 
-        public string this[string columnName] => throw new NotImplementedException();
 
         public string Name {
             get {
@@ -28,12 +27,27 @@ namespace BarcodeScanner.Models
         #region IDataErrorInfo Members
         public string Error
         {
+            get;
+            private set;
+        }
+       
+        public string this[string columnName]
+        {
             get
             {
-                throw new NotImplementedException();
+                if(columnName == "Name")
+                {
+                    if (string.IsNullOrEmpty(Name))
+                    {
+                        Error = "Name can`t be null or empty";
+                    }else
+                    {
+                        Error = null;
+                    }
+                }
+                return Error;
             }
         }
-        
         #endregion
 
         #region INotifyPropertyChanged Members

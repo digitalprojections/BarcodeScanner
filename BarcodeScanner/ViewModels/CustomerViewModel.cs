@@ -13,19 +13,7 @@ namespace BarcodeScanner.ViewModels
             _Customer = new Customer("David");
             UpdateCommand = new CustomerUpdateCommand(this);
 
-        }
-        /// <summary>
-        /// Whether customer can be updated
-        /// </summary>
-        public bool CanUpdate
-        {
-            get
-            {
-                if (Customer == null)
-                    return false;
-                return !String.IsNullOrWhiteSpace(Customer.Name);
-            }
-        }
+        }       
         
 
         public Customer Customer

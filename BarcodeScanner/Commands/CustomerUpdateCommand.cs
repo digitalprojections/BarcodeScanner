@@ -8,7 +8,7 @@ namespace BarcodeScanner.Commands
 {
     internal class CustomerUpdateCommand : ICommand
     {
-        private CustomerViewModel _viewModel;
+        private CustomerViewModel viewModel;
 
         public event EventHandler CanExecuteChanged
         {
@@ -18,18 +18,18 @@ namespace BarcodeScanner.Commands
 
         public CustomerUpdateCommand(CustomerViewModel viewModel)
         {
-            _viewModel = viewModel;
+            this.viewModel = viewModel;
         }
 
 
         public bool CanExecute(object parameter)
         {
-            return _viewModel.CanUpdate;
+            return string.IsNullOrWhiteSpace(viewModel.Customer.Error);
         }
 
         public void Execute(object parameter)
         {
-            _viewModel.SaveChanges();
+            viewModel.SaveChanges();
         }
         
     }

@@ -20,7 +20,7 @@ namespace DCOMProduction.MVVMDemo.byAhmad.ViewModels
 
         public bool CanExecute(object? parameter)
         {
-            throw new NotImplementedException();
+           return _ViewModel.CanUpdate;
         }
 
         public void Execute(object? parameter)

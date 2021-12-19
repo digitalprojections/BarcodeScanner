@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel>
             <Label Content="Customer Name"/>
-            <TextBox Text="{Binding Customer.Name}"/>
+            <TextBox Text="{Binding Customer.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Button Content="Save" Command="{Binding UpdateCommand}" Margin="5"/>
         </StackPanel>
