@@ -9,6 +9,6 @@ namespace BarcodeScanner.DATABASE
 
         public string Name { get; set; }
                 
-        public virtual ICollection<Product> Products { get; set; } = new ObservableCollection<Product>();
+        public virtual List<Product> Products { get; set; }
     }
 }

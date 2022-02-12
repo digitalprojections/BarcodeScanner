@@ -23,8 +23,8 @@ namespace BarcodeScanner.Commands
 
 
         public bool CanExecute(object parameter)
-        {
-            return string.IsNullOrWhiteSpace(viewModel.Customer.Error);
+        {            
+            return !String.IsNullOrWhiteSpace(this.viewModel.Customer.Name);
         }
 
         public void Execute(object parameter)

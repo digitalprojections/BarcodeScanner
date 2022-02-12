@@ -5,15 +5,11 @@ using System.Text;
 
 namespace BarcodeScanner.Models
 {
-    class Customer : INotifyPropertyChanged, IDataErrorInfo
+    public class Customer : INotifyPropertyChanged, IDataErrorInfo
     {
         private string name;
                 
-        public Customer(String customerName)
-        {
-            Name =customerName;
-        }
-
+        public int ID { get; set; }
 
         public string Name {
             get {

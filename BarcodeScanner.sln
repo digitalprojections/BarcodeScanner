@@ -5,8 +5,6 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BarcodeScanner", "BarcodeScanner\BarcodeScanner.csproj", "{4AB3860C-2313-45B8-9841-70408B6349C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCOMProduction.MVVMDemo.byAhmad", "DCOMProductionMVVMDemoByAhmad\DCOMProduction.MVVMDemo.byAhmad.csproj", "{04CD0EC2-C8BA-4D94-80D2-5AEED987740C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{4AB3860C-2313-45B8-9841-70408B6349C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4AB3860C-2313-45B8-9841-70408B6349C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4AB3860C-2313-45B8-9841-70408B6349C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04CD0EC2-C8BA-4D94-80D2-5AEED987740C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04CD0EC2-C8BA-4D94-80D2-5AEED987740C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04CD0EC2-C8BA-4D94-80D2-5AEED987740C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04CD0EC2-C8BA-4D94-80D2-5AEED987740C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

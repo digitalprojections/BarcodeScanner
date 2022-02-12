@@ -2,6 +2,7 @@
 {
     using System;
     using System.ComponentModel;
+ 
     public class Customer : INotifyPropertyChanged
     {
         private string _Name;
