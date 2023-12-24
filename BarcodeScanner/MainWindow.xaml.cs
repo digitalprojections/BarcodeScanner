@@ -23,12 +23,6 @@ namespace BarcodeScanner
         }
 
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var dlg = new CustomerWindow();
-            dlg.Show();
-        }
-
 
     }
 

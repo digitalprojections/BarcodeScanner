@@ -1,4 +1,5 @@
-﻿using BarcodeScanner.DATABASE;
+﻿using BarcodeScanner.Commands;
+using BarcodeScanner.DATABASE;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,56 +15,72 @@ using System.Windows.Input;
 
 namespace BarcodeScanner.ViewModels
 {
-    public class MainViewModel : INotifyCollectionChanged
+    public class MainViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public event NotifyCollectionChangedEventHandler CollectionChanged;
 
         private ICommand loadedCommand;
-
+        
         public ObservableCollection<Category> Cats { get; set; }
         public ObservableCollection<Product> Prods { get; set; }
         public ObservableCollection<ProductShelf> ProdShelfs { get; set; }
         public ObservableCollection<ProductShelfSelector> ProdShellSels { get; set; }
 
+        public ICommand SelectionChange
+        {
+            get => selectionChange;
+            set
+            {
+                selectionChange = value;
+                OnPropertyChanged(nameof(SelectionChange));
+            }
+        }
+
         public CollectionView CategoryView { get; set; }
-        public DBContext dBContext = new();
+        public DBContext context = new();
         public ICommand LoadedCommand { get => loadedCommand; set => loadedCommand = value; }
-        public string Ipaddress { get => ipaddress; set
+        public IAsyncCommand AddCommand { get; }
+
+        public string Ipaddress
+        {
+            get => ipaddress; set
             {
                 ipaddress = value;
-                OnPropertyChanged();
-            } 
+                OnPropertyChanged(nameof(Ipaddress));
+            }
         }
 
         private string ipaddress;
+        private ICommand selectionChange;
 
-        public MainViewModel()
+        public MainViewModel(IShell shell)
         {
+            AddCommand = new OpenMenuCommand(shell);
             Load();
         }
 
         private void Load()
         {
             Ipaddress = "";
-            dBContext.Categories.Load();
-            dBContext.Products.Load();
-            dBContext.ProductShelves.Load();
-            dBContext.ProductShelvesSelectors.Load();
+            context.Categories.Load();
+            context.Products.Load();
+            context.ProductShelves.Load();
+            context.ProductShelvesSelectors.Load();
 
-            Cats = dBContext.Categories.Local.ToObservableCollection();
-            Prods = dBContext.Products.Local.ToObservableCollection();
-            ProdShelfs = dBContext.ProductShelves.Local.ToObservableCollection();
-            ProdShellSels = dBContext.ProductShelvesSelectors.Local.ToObservableCollection();
+            Cats = context.Categories.Local.ToObservableCollection();
+            Prods = context.Products.Local.ToObservableCollection();
+            ProdShelfs = context.ProductShelves.Local.ToObservableCollection();
+            ProdShellSels = context.ProductShelvesSelectors.Local.ToObservableCollection();
 
-            
+
 
             if (LoadedCommand == null)
             {
-                LoadedCommand=new Loader(this);
+                LoadedCommand = new Loader(this);
             }
 
-           
+
         }
 
         public bool Contains(object de)
@@ -109,7 +126,7 @@ namespace BarcodeScanner.ViewModels
         public void Execute(object parameter)
         {
             //Your Code
-            mainViewModel.dBContext.SaveChanges();
+            mainViewModel.context.SaveChanges();
 
         }
     }

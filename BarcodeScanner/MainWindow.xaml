@@ -57,7 +57,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel>
-            <Button x:Name="add_btn" Content="Add Item" IsCancel="True"/>
+            <Button x:Name="add_btn" Content="Add Item" Command="{Binding AddCommand}"/>
             <Button x:Name="settings_btn" Content="Settings" IsCancel="True"/>
             <Button Content="Customer Window"/>
             <TextBlock Text="Customer"/>
@@ -106,11 +106,16 @@
                 <DataGridTemplateColumn Header="Select Shelf" Width="90">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <ComboBox 
-                                ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=DataContext.ProdShelfs}"
+                            <ComboBox                                
+                                ItemsSource="{Binding Source={StaticResource shelfViewSource}}"
                                 SelectedItem="{Binding ProductShelfID, UpdateSourceTrigger=PropertyChanged}"
                                 SelectedValue="ProdShelfID"
                                 DisplayMemberPath="Name">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding SelectionChange}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding Name}"/>
